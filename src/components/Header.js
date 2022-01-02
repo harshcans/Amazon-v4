@@ -81,12 +81,12 @@ function Header(props) {
           <MenuIcon className="h-5 mr-1" />
           All
         </p>
-        <p className="link">Prime Video</p>
-        <p className="link">Amazon Business</p>
+        <p className="link">Top Outfits</p>
+        <p className="link">Rianncci Business</p>
         <p className="link">Today's Deals</p>
         <p className="link hidden lg:flex">Electronics</p>
         <p className="link hidden lg:flex">Food & Grocery</p>
-        <p className="link hidden lg:flex">Prime</p>
+        <p className="link hidden lg:flex">Shirts</p>
         <p className="link hidden lg:flex">Buy Again</p>
         <p className="link hidden lg:flex">Shopper Toolkit</p>
         <p className="link hidden lg:flex">Health & Personal Care</p>
