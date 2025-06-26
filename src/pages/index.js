@@ -1,9 +1,11 @@
+// pages/index.js
+
 import Head from "next/head";
 import Header from "../components/Header";
 import Banner from "../components/Banner";
 import ProductFeed from "../components/ProductFeed";
-import { getSession } from "next-auth/client";
 import Footer from "../components/Footer";
+import { supabase } from "../../supabase"; // make sure you have this
 
 export default function Home({ products }) {
   return (
@@ -21,16 +23,25 @@ export default function Home({ products }) {
   );
 }
 
-export async function getServerSideProps(context) {
-  const session = await getSession(context);
-  const products = await fetch(
-    "https://fakestoreapi.com/products"
-  ).then((res) => res.json());
+// Server-side data fetching from Supabase
+export async function getServerSideProps() {
+  const { data: products, error } = await supabase
+    .from("products")
+    .select("*")
+    .order("created_at", { ascending: false }); // optional sorting
+
+  if (error) {
+    console.error("Error fetching products:", error.message);
+    return {
+      props: {
+        products: [],
+      },
+    };
+  }
 
   return {
     props: {
       products,
-      session
-    }
+    },
   };
 }
