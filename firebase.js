@@ -1,4 +1,7 @@
-import firebase from "firebase";
+// firebase.js
+
+import { initializeApp, getApps, getApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBHolhUHjZTYfhOMvqy4Q-yZ1wtuAghcx4",
@@ -7,13 +10,13 @@ const firebaseConfig = {
   storageBucket: "nxt-8b4a5.appspot.com",
   messagingSenderId: "391730790043",
   appId: "1:391730790043:web:a26662c36c06b6a6bed03e",
-  measurementId: "G-K7V3W17242"
+  measurementId: "G-K7V3W17242",
 };
 
-const app = !firebase.apps.length
-  ? firebase.initializeApp(firebaseConfig)
-  : firebase.app();
+// Initialize Firebase
+const app = getApps().length ? getApp() : initializeApp(firebaseConfig);
 
-const db = app.firestore();
+// Get Firestore instance
+const db = getFirestore(app);
 
 export default db;
