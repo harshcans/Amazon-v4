@@ -1,6 +1,6 @@
 import { loadStripe } from "@stripe/stripe-js";
 import axios from "axios";
-import { getSession, useSession } from "next-auth/client";
+import { getSession, useSession } from "next-auth/react";
 import Head from "next/head";
 import Currency from "react-currency-formatter";
 import { useSelector } from "react-redux";
